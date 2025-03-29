@@ -149,7 +149,7 @@ export function TimelineDemo() {
   ];
   return (
     <div className="min-h-screen w-full">
-      <div className="relative top-0 left-0 w-full">
+      <div className="relative top-0 left-0">
         <Timeline data={data} />
       </div>
     </div>

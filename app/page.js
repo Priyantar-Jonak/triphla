@@ -16,37 +16,38 @@ export default async function Home() {
   });
 
   return (
-    <div>
+    <div className="w-screen px-3 py-3">
       <div
         data-theme="coffee"
-        className="relative overflow-hidden my-3 ml-3 h-[80vh] rounded-xl"
+        className="relative overflow-hidden h-[80vh] rounded-xl"
       >
         <div className="absolute inset-0 z-0">
-        <Squares />
-      </div>
-        
-        <Navbar className="relative z-10 mb-10" />
-        <main className="z-2 top-16 relative place-items-center">
-          <div className="grid w-[70vw] h-1 place-items-center">
-            <div className="leading-none h-[14vh] rounded-t-[3vw] rounded-b-[3vw]">
-              <h1 className="text-7xl text-center">Your AI partner</h1>
+          <Squares />
+        </div>
+
+        <Navbar className="relative z-10" />
+        <main className="z-2 relative place-items-center">
+          <div className="grid h-1 place-items-center">
+            <div className="">
+              <h1 className="text-[7.5vw] text-center">Your AI partner</h1>
             </div>
-            <div className="leading-none -mt-3 h-[14vh] rounded-b-[2vw]">
-              <h1 className="text-7xl text-center">for all things</h1>
+            <div className="leading-none">
+              <h1 className="text-[7.5vw] text-center">for all things</h1>
             </div>
-            <div className="leading-none -mt-3 h-[12vh] flex rounded-b-[2vw] justify-center">
-              <div>
-                <h1 className="text-7xl text-center">crypto</h1>
+            <div className="flex justify-center">
+              <div className="-mt-3">
+                <h1 className="text-[7.5vw] text-center">crypto</h1>
               </div>
-              <Link href="/chat">
-              <OutlineButton/>
-              </Link>
-              
+              <div className="pt-6">
+                <Link href="/chat">
+                  <OutlineButton />
+                </Link>
+              </div>
             </div>
           </div>
         </main>
       </div>
-      <div className="flex gap-3 ml-3 mb-3">
+      <div className="flex gap-3 pb-3 pt-3">
         <div className="relative rounded-xl w-[45vw] h-[25.6vw] overflow-hidden">
           <Image
             src="/bitc.jpeg"
@@ -81,10 +82,9 @@ export default async function Home() {
           <Card id="2" />
         </div>
       </div>
-      <div className="absolute mb-3 mx-3 rounded-xl overflow-hidden">
+      <div className="absolute mr-3 rounded-xl overflow-hidden">
         <TimelineDemo></TimelineDemo>
       </div>
-      
     </div>
   );
 }
