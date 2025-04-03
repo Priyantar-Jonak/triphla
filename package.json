@@ -11,12 +11,8 @@
   "dependencies": {
     "@clerk/nextjs": "^6.12.5",
     "@google/generative-ai": "^0.24.0",
-<<<<<<< HEAD
-    "@radix-ui/react-slider": "^1.2.3",
-=======
     "@radix-ui/react-progress": "^1.1.2",
     "@radix-ui/react-slider": "^1.1.2",
->>>>>>> c2bf139327f2467261e37239d14d25cc7a936022
     "@radix-ui/react-slot": "^1.1.2",
     "@radix-ui/react-switch": "^1.0.3",
     "@remixicon/react": "^4.6.0",
