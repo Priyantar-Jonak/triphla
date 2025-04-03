@@ -50,27 +50,27 @@ export default function Home() {
     
 
     <div>
-      <div data-theme="coffee" className="relative overflow-hidden my-3 ml-3 h-[80vh] rounded-xl">
+      <div data-theme="coffee" className="relative overflow-hidden h-[80vh] rounded-xl">
         <div className="absolute inset-0 z-0">
           <Squares />
         </div>
       
         {/* <StockNews/> This will fetch and log the stock news */}
         
-        <Navbar className="relative z-10 mb-10" />
-        <main className="z-2 top-16 relative place-items-center">
+        <Navbar className="relative z-10" />
+        <main className="z-2 top-14 relative place-items-center">
           <div className="grid w-[70vw] h-1 place-items-center">
-            <div className="leading-none h-[14vh] rounded-t-[3vw] rounded-b-[3vw]">
-              <h1 className="text-7xl text-center">Your AI partner</h1>
+            <div className="leading-none">
+              <h1 className="text-[7.5vw] text-center">Your AI partner</h1>
             </div>
             <div className="leading-none">
               <h1 className="text-[7.5vw] text-center">for all things</h1>
             </div>
             <div className="flex justify-center">
-              <div className="-mt-3">
-                <h1 className="text-[7.5vw] text-center">crypto</h1>
+              <div className="-mt-5">
+                <h1 className="text-[7.5vw] text-center">Finance</h1>
               </div>
-              <div className="pt-6">
+              <div className="pt-4">
                 <Link href="/chat">
                   <OutlineButton />
                 </Link>
@@ -82,10 +82,10 @@ export default function Home() {
 
 
       <div className="w-screen">
-          <h2 className="text-3xl font-bold text-center mb-4"></h2>
+          <h2 className="text-3xl font-bold text-center mt-4"></h2>
           <BidirectionalSlider images={images} />
         </div>
-      <div className="flex gap-3 ml-3 mb-3">
+      <div className="flex gap-3 ml-3 mb-4 -mt-8">
         <div className="relative rounded-xl w-[45vw] h-[25.6vw] overflow-hidden">
           <Image
             src="/bitc.jpeg"

@@ -25,7 +25,10 @@ export default function Navbar() {
                 <Link href="/about" className="text-white hover:text-slate-300">
                     About
                 </Link>
-
+                <Link href="/dashboard" className="text-white hover:text-slate-300">
+                    Dashboard
+                </Link>
+                
             </div>
             <div className="flex pr-7">
                 <SignedOut>
