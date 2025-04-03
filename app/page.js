@@ -1,6 +1,4 @@
-"use client";
-import { useEffect } from "react";
-import axios from "axios";
+import axios from "axios"; // Keep axios if other parts need it, or remove if unused after changes.
 import Navbar from "@/components/Navbar";
 import { SignedOut } from "@clerk/nextjs";
 import Card from "@/components/cards";
@@ -11,32 +9,41 @@ import OutlineButton from "@/components/outlinebutton";
 import Squares from "@/components/backgroundPaths";
 import { TimelineDemo } from "@/components/time";
 import BidirectionalSlider from "@/components/bidirectionalslider";
-import { useState } from "react";
+// Removed useState and useEffect
 
+const NEWS_API= process.VITE_NEWS_API || "https://triphla-yv9t.onrender.com/";
+async function fetchNews() {
+  try {
+    // Using fetch API for server-side fetching and revalidation (ISR)
+    const response = await fetch(NEWS_API, {
+      method: 'POST', // Assuming POST is required as per original code
+      headers: {
+        'Content-Type': 'application/json', // Add headers if needed by the API
+      },
+      // Add body if the POST request needs data: body: JSON.stringify({ key: 'value' })
+      next: { revalidate: 3600 } // Revalidate every hour (3600 seconds)
+    });
 
-const NEWS_API= process.VITE_NEWS_API || "http://localhost:8000/api/stock-news";
+    if (!response.ok) {
+      // Log detailed error for server-side debugging
+      console.error(`Error fetching stock news: ${response.status} ${response.statusText}`);
+      const errorBody = await response.text();
+      console.error("Error body:", errorBody);
+      return null; // Return null or throw an error
+    }
 
-export default function Home() {
-  
-  const [news, setNews] = useState(null)
+    const newsData = await response.json();
+    return newsData;
+  } catch (error) {
+    console.error("Error fetching stock news:", error);
+    return null; // Return null or handle error appropriately
+  }
+}
 
-  useEffect(() => {
-    console.log("hi")
-    axios.post(NEWS_API)
-        .then(response => {
-            setNews(response.data)
-            console.log(news)
-        })
-        .catch(error => {
-            console.error("Error fetching stock news:", error);
-        });
-    }, [news]);
-
-    // await new Promise((resolve) => {
-    //   setTimeout(() => {
-    //     resolve();
-    //   }, 10000);
-    // });
+export default async function Home() {
+  const news = await fetchNews(); // Fetch data on the server
+  const newsArr= JSON.parse(news); // Parse the news data
+  console.log("Parsed news data:", typeof(newsArr)); // Log the parsed data
   const images = [
     { src: '/images/image1.jpg', alt: 'Image 1' },
     { src: '/images/image2.jpg', alt: 'Image 2' },
@@ -70,22 +77,23 @@ export default function Home() {
               <div className="-mt-5">
                 <h1 className="text-[7.5vw] text-center">Finance</h1>
               </div>
-              <div className="pt-4">
-                <Link href="/chat">
-                  <OutlineButton />
-                </Link>
-              </div>
+              <Link href="/interface">
+                <OutlineButton />
+              </Link>
             </div>
           </div>
         </main>
       </div>
 
 
-      <div className="w-screen">
-          <h2 className="text-3xl font-bold text-center mt-4"></h2>
-          <BidirectionalSlider images={images} />
+      <div className="w-full">
+          <h2 className="text-3xl font-bold text-center mb-4">Latest News</h2> {/* Added a title */}
+          {/* Pass fetched news data to the slider */}
+          {/*news ? <BidirectionalSlider news={news} /> : <p>Loading news...</p>*/}
+          {/* If BidirectionalSlider also needs images, pass them too */}
+          <BidirectionalSlider images={images} news={newsArr} />
         </div>
-      <div className="flex gap-3 ml-3 mb-4 -mt-8">
+      {/* <div className="flex gap-3  mb-3">
         <div className="relative rounded-xl w-[45vw] h-[25.6vw] overflow-hidden">
           <Image
             src="/bitc.jpeg"
@@ -114,10 +122,10 @@ export default function Home() {
           <Card id="1" />
           <Card id="2" />
         </div>
-      </div>
-      <div className="absolute mb-3 mx-3 rounded-xl overflow-hidden">
+      </div> */}
+      {/* <div className="absolute mb-3 mx-3 rounded-xl overflow-hidden"> */}
         <TimelineDemo />
-      </div>
+      {/* </div> */}
     </div>
   );
 }
