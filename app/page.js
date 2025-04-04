@@ -11,7 +11,7 @@ import { TimelineDemo } from "@/components/time";
 import BidirectionalSlider from "@/components/bidirectionalslider";
 // Removed useState and useEffect
 
-const NEWS_API= process.VITE_NEWS_API || "https://triphla-yv9t.onrender.com/";
+const NEWS_API = process.VITE_NEWS_API || "https://triphla-yv9t.onrender.com/";
 async function fetchNews() {
   try {
     // Using fetch API for server-side fetching and revalidation (ISR)
@@ -42,8 +42,8 @@ async function fetchNews() {
 
 export default async function Home() {
   const news = await fetchNews(); // Fetch data on the server
-  const newsArr= JSON.parse(news); // Parse the news data
-  console.log("Parsed news data:", typeof(newsArr)); // Log the parsed data
+  const newsArr = JSON.parse(news); // Parse the news data
+  console.log("Parsed news data:", typeof (newsArr)); // Log the parsed data
   const images = [
     { src: '/images/image1.jpg', alt: 'Image 1' },
     { src: '/images/image2.jpg', alt: 'Image 2' },
@@ -54,27 +54,27 @@ export default async function Home() {
   ];
 
   return (
-    
+
 
     <div>
-      <div data-theme="coffee" className="relative overflow-hidden h-[80vh] rounded-xl">
-        <div className="absolute inset-0 z-0">
+      <div data-theme="coffee" className="relative overflow-hidden h-[85vh] rounded-b-xl">
+        <div className="absolute rounded-xl inset-0 z-0">
           <Squares />
         </div>
-      
+
         {/* <StockNews/> This will fetch and log the stock news */}
-        
+
         <Navbar className="relative z-10" />
-        <main className="z-2 top-14 relative place-items-center">
+        <main className="flex z-2 top-12 relative justify-center">
           <div className="grid w-[70vw] h-1 place-items-center">
-            <div className="leading-none">
+            <div className="-mt-3">
               <h1 className="text-[7.5vw] text-center">Your AI partner</h1>
             </div>
-            <div className="leading-none">
+            <div className="-mt-3.5">
               <h1 className="text-[7.5vw] text-center">for all things</h1>
             </div>
-            <div className="flex justify-center">
-              <div className="-mt-5">
+            <div className="flex -mt-5 justify-center">
+              <div className="">
                 <h1 className="text-[7.5vw] text-center">Finance</h1>
               </div>
               <Link href="/interface">
@@ -86,21 +86,20 @@ export default async function Home() {
       </div>
 
 
-      <div className="w-full">
-          <h2 className="text-3xl font-bold text-center mb-4">Latest News</h2> {/* Added a title */}
-          {/* Pass fetched news data to the slider */}
-          {/*news ? <BidirectionalSlider news={news} /> : <p>Loading news...</p>*/}
-          {/* If BidirectionalSlider also needs images, pass them too */}
-          <BidirectionalSlider images={images} news={newsArr} />
-        </div>
-      {/* <div className="flex gap-3  mb-3">
+      <div className="py-3 w-full">
+        <h2 className="text-3xl text-center mb-4">Latest News</h2> {/* Added a title */}
+        {/* Pass fetched news data to the slider */}
+        {/*news ? <BidirectionalSlider news={news} /> : <p>Loading news...</p>*/}
+        {/* If BidirectionalSlider also needs images, pass them too */}
+        <BidirectionalSlider images={images} news={newsArr} />
+      </div>
+      <div className="flex justify-center gap-3 mb-3">
         <div className="relative rounded-xl w-[45vw] h-[25.6vw] overflow-hidden">
           <Image
             src="/bitc.jpeg"
             alt="Dall"
             layout="fill"
             objectFit="cover"
-            className="opacity-60"
           />
           <div className="absolute pl-16 right-0 w-[27.5vw] h-full">
             <span data-theme="coffee" className="mt-12 opacity-90 flex items-center justify-center w-10 h-10 rounded-full">
@@ -117,14 +116,14 @@ export default async function Home() {
             </div>
           </div>
         </div>
-        
+
         <div className="flex gap-3">
           <Card id="1" />
           <Card id="2" />
         </div>
-      </div> */}
+      </div>
       {/* <div className="absolute mb-3 mx-3 rounded-xl overflow-hidden"> */}
-        <TimelineDemo />
+      <TimelineDemo />
       {/* </div> */}
     </div>
   );

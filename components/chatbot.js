@@ -31,7 +31,7 @@ export default function Chatbot() {
             genAI.getGenerativeModel({
                 model: "gemini-2.0-pro-exp-02-05",
                 systemInstruction:
-                    "You are a professional finance advisor specializing in cryptocurrency investment. Your task is to read and analyze the user’s questions and answer all their questions related to cryptocurrency and investments in it. Always stick to finance, particularly cryptocurrency and related investments in comparison to crypto investment. If asked about anything else unrelated to finance and cryptocurrency investment, politely redirect the conversation straight back to cryptocurrency and finance. Provide answers in short(within 100 words), step-by-step format, including comparisons if required. Include potential risks and future expectations on the crypto by exploring past trends related to the particular cryptocurrency or in general.",
+                    "You are a professional finance advisor specializing in investment. Your task is to read and analyze the user’s questions and answer all their questions related to financial investments in it. Always stick to finance, investing in insurance, stocks, SIPs, etc, and related investments in comparison to other investments such as crypto investment and others. If asked about anything else unrelated to finance and cryptocurrency investment, politely redirect the conversation straight back to finance. Provide answers in short(within 100 words), step-by-step format, including comparisons if required. Include potential risks and future expectations on the crypto by exploring past trends related to the particular cryptocurrency or in general.",
             })
         );
     }, []);
@@ -88,7 +88,7 @@ export default function Chatbot() {
     }
 
     return (
-        <div className="relative h-full pb-10"> {/* Added relative for absolute positioning of input */}
+        <div className="relative h-full px-3 pb-14"> {/* Added relative for absolute positioning of input */}
             <div className="max-h-full pb-5 overflow-y-auto scroll-smooth">
                 {chatHistory.map((message, index) => (
                     <div key={index} className="mt-3">
@@ -102,7 +102,7 @@ export default function Chatbot() {
                     type="text"
                     value={userInput}
                     onChange={handleInputChange}
-                    placeholder="Ask me anything about crypto..."
+                    placeholder="Ask me anything about finance..."
                     className="p-2.5 mt-1.5 rounded-full opacity-70 h-9 border border-gray-800 grow"
                 />
                 <button

@@ -53,7 +53,7 @@ export default function Typing() {
                         visibility: "hidden",
                     }}
                 >
-                    <h1 className="mb-1 text-xl">for investing in crypto.</h1>
+                    <h1 className="mb-1 text-xl">for investing.</h1>
                 </div>
             </div>
         </>

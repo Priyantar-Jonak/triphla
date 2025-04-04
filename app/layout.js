@@ -20,7 +20,6 @@ export default function RootLayout({ children }) {
             disableTransitionOnChange
           >
             <div className="w-full h-full"> {/* Ensure flex container takes full width/height */}
-              <Navbar/>
               {children}
             </div>
           </ThemeProvider>

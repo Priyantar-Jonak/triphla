@@ -5,7 +5,7 @@ export default function AnimatedLinkComponent() {
   const animatedLinkWrapper = {
     display: "inline-block",
     position: "relative",
-    margin: "3.3vh",
+    margin: "8vh 6vh",
   };
 
   const animatedLink = {
