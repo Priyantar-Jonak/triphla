@@ -20,7 +20,7 @@ export default function Navbar() {
                     alignItems: "center",
                     gap: "1.5vw",
                 }}
-                className="flex font-light fix justify-center items-center gap-10"
+                className="flex fix justify-center items-center gap-10"
             >
                 <h4>
                     <a href="/">
@@ -45,7 +45,7 @@ export default function Navbar() {
             </div>
             <div className="flex justify-center items-center pr-7">
                 <SignedOut>
-                    <div className="rounded-full btn btn-sm btn-primary">
+                    <div className="rounded-full mr-7 btn btn-sm btn-primary">
                         <SignInButton mode="modal">Sign In</SignInButton>
                     </div>
                 </SignedOut>
@@ -60,7 +60,7 @@ export default function Navbar() {
             <style jsx>{`
     nav {
         background-color: rgba(6, 6, 5, 0.7); /* Translucent background */
-        backdrop-filter: blur(9vw); /* Apply blur effect */
+        backdrop-filter: blur(10px); /* Apply blur effect */
         -webkit-backdrop-filter: blur(10px);
     }
 

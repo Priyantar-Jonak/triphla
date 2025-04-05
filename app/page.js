@@ -1,4 +1,3 @@
-import axios from "axios"; // Keep axios if other parts need it, or remove if unused after changes.
 import Navbar from "@/components/Navbar";
 import { SignedOut } from "@clerk/nextjs";
 import Card from "@/components/cards";
@@ -9,9 +8,9 @@ import OutlineButton from "@/components/outlinebutton";
 import Squares from "@/components/backgroundPaths";
 import { TimelineDemo } from "@/components/time";
 import BidirectionalSlider from "@/components/bidirectionalslider";
-// Removed useState and useEffect
+import BlurBottom from "@/components/blurbottom";
 
-const NEWS_API = process.VITE_NEWS_API || "https://triphla-yv9t.onrender.com/";
+const NEWS_API = process.VITE_NEWS_API || "https://triphla-yv9t.onrender.com/api/stock-news";
 async function fetchNews() {
   try {
     // Using fetch API for server-side fetching and revalidation (ISR)
@@ -41,6 +40,7 @@ async function fetchNews() {
 }
 
 export default async function Home() {
+
   const news = await fetchNews(); // Fetch data on the server
   const newsArr = JSON.parse(news); // Parse the news data
   console.log("Parsed news data:", typeof (newsArr)); // Log the parsed data
@@ -83,6 +83,7 @@ export default async function Home() {
             </div>
           </div>
         </main>
+        <BlurBottom />
       </div>
 
 
@@ -125,6 +126,7 @@ export default async function Home() {
       {/* <div className="absolute mb-3 mx-3 rounded-xl overflow-hidden"> */}
       <TimelineDemo />
       {/* </div> */}
+      
     </div>
   );
 }

@@ -1,11 +1,15 @@
-import { React, Suspense } from "react";
+"use client";
+import { React, Suspense, useEffect } from "react";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "next-themes"; // Import ThemeProvider
 import Navbar from "@/components/Navbar";
+import { AuthProvider } from "@/app/api/context/AuthContext"; // Import AuthProvider
 
 export default function RootLayout({ children }) {
   return (
+    
+
     <ClerkProvider>
       <html lang="en" className="scroll-smooth" suppressHydrationWarning> {/* Add suppressHydrationWarning */}
         <head>
