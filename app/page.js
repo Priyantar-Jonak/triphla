@@ -56,18 +56,19 @@ export default async function Home() {
         </div>
       
         {/* <StockNews/> This will fetch and log the stock news */}
-        <main className="z-2 top-16 relative place-items-center">
-          <div className="grid w-[70vw] h-1 place-items-center">
-            <div className="leading-none h-[14vh] rounded-t-[3vw] rounded-b-[3vw]">
-              <h1 className="text-7xl text-center">Your AI partner</h1>
-            </div>
-            <div className="leading-none -mt-3 h-[14vh] rounded-b-[2vw]">
-              <h1 className="text-7xl text-center">for all things</h1>
-            </div>
-            <div className="leading-none -mt-3 h-[12vh] flex rounded-b-[2vw] justify-center">
-              <div>
-                <h1 className="text-7xl text-center">crypto</h1>
-              </div>
+        <main className="z-2 top-16 relative grid place-items-center px-4 md:px-8">
+          <div className="grid w-full max-w-6xl gap-3 text-center">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold">
+            Think Smarter
+            </h1>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold">
+            Invest Wiser
+            </h1>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold">
+            with triphla
+            </h1>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-2">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold"></h1>
               <Link href="/interface">
                 <OutlineButton />
               </Link>
