@@ -70,7 +70,7 @@ export default function Navbar() {
         <div className="bg-white w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
           <Image src="/dall.png" alt="Triphla Logo" width={32} height={32} />
         </div>
-        <div className="ml-2 font-semibold text-base md:text-lg text-white hover:text-primary transition-colors duration-300">
+        <div className="ml-2 font-semibold text-base md:text-lg hover:text-primary transition-colors duration-300">
           triphla
         </div>
       </div>
@@ -84,7 +84,7 @@ export default function Navbar() {
           <Link
             key={item}
             href={`/${item.toLowerCase() === "home" ? "" : item.toLowerCase()}`}
-            className="text-sm font-medium text-white/80 hover:text-primary transition-all duration-200 hover:scale-105"
+            className="text-sm font-medium hover:text-primary transition-all duration-200 hover:scale-105"
           >
             {item}
           </Link>

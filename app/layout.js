@@ -3,6 +3,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "next-themes"; // Import ThemeProvider
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/footer";
 
 export default function RootLayout({ children }) {
   return (
@@ -22,6 +23,7 @@ export default function RootLayout({ children }) {
             <div className="w-full h-full"> {/* Ensure flex container takes full width/height */}
               <Navbar/>
               {children}
+              <Footer/>
             </div>
             
           </ThemeProvider>
