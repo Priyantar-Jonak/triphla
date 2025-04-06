@@ -2,16 +2,17 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
 import { SignInButton, UserButton, SignedIn, SignedOut } from "@clerk/nextjs";
 import { ThemeToggleButton } from "./ui/theme-toggle-button";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
 
 export default function Navbar() {
   const navbarRef = useRef(null);
   const logoRef = useRef(null);
   const linksRef = useRef(null);
   const actionsRef = useRef(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     if (!navbarRef.current || !logoRef.current || !linksRef.current || !actionsRef.current) return;
@@ -45,10 +46,10 @@ export default function Navbar() {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       if (navbarRef.current) {
-        const blurValue = Math.min(scrollY / 40 + 10, 30); // more aggressive blur
-        const bgOpacity = Math.min(0.1 + scrollY / 200, 0.3); // subtle opacity
+        const blurValue = Math.min(scrollY / 40 + 10, 30);
+        const bgOpacity = Math.min(0.1 + scrollY / 200, 0.3);
         navbarRef.current.style.backdropFilter = `blur(${blurValue}px)`;
-        navbarRef.current.style.backgroundColor = `rgba(18, 18, 20, ${bgOpacity})`; // soft dark frosted
+        navbarRef.current.style.backgroundColor = `rgba(18, 18, 20, ${bgOpacity})`;
         navbarRef.current.style.boxShadow = `0 2px 20px rgba(0, 0, 0, ${bgOpacity + 0.1})`;
       }
     };
@@ -56,6 +57,8 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const navLinks = ["Home", "Interface", "Dashboard", "Learn", "About"];
 
   return (
     <nav
@@ -67,38 +70,41 @@ export default function Navbar() {
         <div className="bg-white w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
           <Image src="/dall.png" alt="Triphla Logo" width={32} height={32} />
         </div>
-        <div className="ml-2 font-semibold text-base md:text-lg text-white hover:text-primary transition-colors duration-300">
+        <div className="ml-2 font-semibold text-base md:text-lg hover:text-primary transition-colors duration-300">
           triphla
         </div>
       </div>
 
-      {/* Navigation Links */}
+      {/* Desktop Navigation Links */}
       <div
         ref={linksRef}
         className="hidden md:flex items-center space-x-4 lg:space-x-8"
       >
-        {["Home", "Interface", "Dashboard", "Learn", "About"].map((item) => (
+        {navLinks.map((item) => (
           <Link
             key={item}
             href={`/${item.toLowerCase() === "home" ? "" : item.toLowerCase()}`}
-            className="text-sm font-medium text-white/80 hover:text-primary transition-all duration-200 hover:scale-105"
+            className="text-sm font-medium hover:text-primary transition-all duration-200 hover:scale-105"
           >
             {item}
           </Link>
         ))}
       </div>
 
-      {/* Mobile menu button */}
-      <button className="md:hidden text-white hover:text-primary transition-colors">
+      {/* Mobile Menu Button */}
+      <button
+        className="md:hidden text-white hover:text-primary transition-colors"
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <line x1="4" x2="20" y1="12" y2="12" />
           <line x1="4" x2="20" y1="6" y2="6" />
+          <line x1="4" x2="20" y1="12" y2="12" />
           <line x1="4" x2="20" y1="18" y2="18" />
         </svg>
       </button>
 
       {/* User Actions */}
-      <div ref={actionsRef} className="flex items-center space-x-2 md:space-x-4">
+      <div ref={actionsRef} className="hidden md:flex items-center space-x-2 md:space-x-4">
         <SignedOut>
           <div className="rounded-full bg-primary/90 hover:bg-primary px-3 py-1 text-sm text-primary-foreground shadow-sm hover:shadow-md transition-all duration-200">
             <SignInButton mode="modal">Sign In</SignInButton>
@@ -111,6 +117,34 @@ export default function Navbar() {
 
         <ThemeToggleButton />
       </div>
+
+      {/* Mobile Dropdown Menu */}
+      {menuOpen && (
+        <div className="absolute top-full left-0 right-0 mt-2 bg-background border border-border rounded-xl shadow-lg p-4 flex flex-col space-y-3 md:hidden z-50">
+          {navLinks.map((item) => (
+            <Link
+              key={item}
+              href={`/${item.toLowerCase() === "home" ? "" : item.toLowerCase()}`}
+              className="text-sm font-medium text-white/80 hover:text-primary transition-all duration-200"
+              onClick={() => setMenuOpen(false)}
+            >
+              {item}
+            </Link>
+          ))}
+
+          <div className="flex justify-between items-center mt-2">
+            <SignedOut>
+              <SignInButton mode="modal">
+                <span className="text-sm text-primary">Sign In</span>
+              </SignInButton>
+            </SignedOut>
+            <SignedIn>
+              <UserButton afterSignOutUrl="/" />
+            </SignedIn>
+            <ThemeToggleButton />
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

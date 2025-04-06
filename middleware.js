@@ -2,6 +2,7 @@ import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
 const isProtectedRoute = createRouteMatcher([
   // Add any protected routes here
+  "/dashboard",
   "/interface",
   "/api/user/avatar(.*)", // Protect the avatar API route
 ]);

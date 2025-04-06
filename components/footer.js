@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 const Footer = () => {
   return (
@@ -8,7 +9,7 @@ const Footer = () => {
         <div>
           <h2 className="text-2xl font-bold text-white">triphla</h2>
           <p className="mt-2 text-sm text-gray-400">
-            Your AI-powered mental health companion. Confidential, secure, and always available.
+             The one stop platform for investing with AI powerd companions. Confidential, secure, and always available.
           </p>
         </div>
 
@@ -16,10 +17,10 @@ const Footer = () => {
         <div>
           <h3 className="text-xl font-semibold text-white mb-3">Quick Links</h3>
           <ul className="space-y-2">
-            <li><a href="/" className="hover:text-white">Home</a></li>
-            <li><a href="/chat" className="hover:text-white">Chat</a></li>
-            <li><a href="/about" className="hover:text-white">About</a></li>
-            <li><a href="/contact" className="hover:text-white">Contact</a></li>
+            <li><Link href="/" className="hover:text-white">Home</Link></li>
+            <li><Link href="/chat" className="hover:text-white">Chat</Link></li>
+            <li><Link href="/about" className="hover:text-white">About</Link></li>
+            <li><Link href="/contact" className="hover:text-white">Contact</Link></li>
           </ul>
         </div>
 
