@@ -22,7 +22,7 @@ export function TimelineDemo() {
           <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
           <strong>Your AI-Powered Guide to Smart Crypto and Stock Market Decisions</strong>
           </p>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Image
               src={step1pic1}
               alt="startup template"

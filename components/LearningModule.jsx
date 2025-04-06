@@ -304,7 +304,10 @@ const CongratulationSection = ({ onContinueLearning, currentModuleTitle, nextMod
             >
                 <Trophy className="w-24 h-24 mx-auto text-amber-400 mb-6" />
             </motion.div>
-            <h3 className="text-4xl font-bold mb-6 text-amber-200">Congratulations!</h3>
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-amber-200">
+  Congratulations!
+</h3>
+
             <p className="text-2xl text-amber-100/90 leading-relaxed mb-8">
                 You've successfully completed the {currentModuleTitle} module!
                 {nextModuleTitle && (
@@ -507,55 +510,62 @@ const LearningModule = ({ initialTopic = 'stockMarket' }) => { // Accept initial
                     </div>
 
                     {/* Navigation Section - Improved button visibility */}
-                    <div className="flex justify-between items-center mb-6 md:mb-8">
-                        <Button
-                            onClick={() => setCurrentSectionIndex(prev => Math.max(0, prev - 1))}
-                            disabled={currentSection === 0}
-                            className={`
-                                bg-gradient-to-r from-amber-500 to-amber-600 
-                                hover:from-amber-600 hover:to-amber-700
-                                text-amber-50 py-3 px-6 text-lg font-medium rounded-lg
-                                shadow-lg hover:shadow-xl
-                                flex items-center gap-2
-                                border border-amber-500
-                                transition-all duration-300
-                                ${currentSection === 0 ? 'opacity-50 cursor-not-allowed' : 'transform hover:-translate-x-1'}
-                            `}
-                        >
-                            <ArrowLeft className="w-5 h-5" />
-                            Previous
-                        </Button>
-                        <div className="flex items-center gap-3">
-                            {sections.map((_, index) => (
-                                <div
-                                    key={index}
-                                    className={`w-3 h-3 md:w-4 md:h-4 rounded-full transition-all duration-300 ${
-                                        index === currentSectionIndex // Use correct state variable here
-                                            ? 'bg-amber-400 shadow-lg shadow-amber-400/50 scale-125' // These classes create the glow
-                                            : 'bg-amber-800 hover:bg-amber-700 cursor-pointer'
-                                    }`}
-                                    onClick={() => setCurrentSectionIndex(index)} // Use correct state setter here
-                                />
-                            ))}
-                        </div>
-                        <Button
-                            onClick={handleNextClick}
-                            disabled={nextBtnInvalid}
-                            className={`
-                                bg-gradient-to-r from-amber-500 to-amber-600 
-                                hover:from-amber-600 hover:to-amber-700
-                                text-amber-50 py-3 px-6 text-lg font-medium rounded-lg
-                                shadow-lg hover:shadow-xl
-                                flex items-center gap-2
-                                border border-amber-500
-                                transition-all duration-300
-                                ${nextBtnInvalid ? 'opacity-50 cursor-not-allowed' : 'transform hover:translate-x-1'}
-                            `}
-                        >
-                            Next
-                            <ArrowRight className="w-5 h-5" />
-                        </Button>
-                    </div>
+                    <div className="flex flex-col-reverse md:flex-row justify-between items-center gap-4 md:gap-6 mb-6 md:mb-8">
+    {/* Previous Button */}
+    <Button
+        onClick={() => setCurrentSectionIndex(prev => Math.max(0, prev - 1))}
+        disabled={currentSection === 0}
+        className={`
+            bg-gradient-to-r from-amber-500 to-amber-600 
+            hover:from-amber-600 hover:to-amber-700
+            text-amber-50 py-2 px-4 sm:py-3 sm:px-6 text-base sm:text-lg font-medium rounded-lg
+            shadow-lg hover:shadow-xl
+            flex items-center gap-2
+            border border-amber-500
+            transition-all duration-300
+            ${currentSection === 0 ? 'opacity-50 cursor-not-allowed' : 'transform hover:-translate-x-1'}
+        `}
+    >
+        <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+        <span className="hidden sm:inline">Previous</span>
+    </Button>
+
+    {/* Dot Navigation */}
+    <div className="flex items-center gap-2 sm:gap-3">
+        {sections.map((_, index) => (
+            <div
+                key={index}
+                className={`
+                    w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 
+                    rounded-full transition-all duration-300
+                    ${index === currentSectionIndex 
+                        ? 'bg-amber-400 shadow-lg shadow-amber-400/50 scale-125'
+                        : 'bg-amber-800 hover:bg-amber-700 cursor-pointer'}
+                `}
+                onClick={() => setCurrentSectionIndex(index)}
+            />
+        ))}
+    </div>
+
+    {/* Next Button */}
+    <Button
+        onClick={handleNextClick}
+        disabled={nextBtnInvalid}
+        className={`
+            bg-gradient-to-r from-amber-500 to-amber-600 
+            hover:from-amber-600 hover:to-amber-700
+            text-amber-50 py-2 px-4 sm:py-3 sm:px-6 text-base sm:text-lg font-medium rounded-lg
+            shadow-lg hover:shadow-xl
+            flex items-center gap-2
+            border border-amber-500
+            transition-all duration-300
+            ${nextBtnInvalid ? 'opacity-50 cursor-not-allowed' : 'transform hover:translate-x-1'}
+        `}
+    >
+        <span className="hidden sm:inline">Next</span>
+        <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+    </Button>
+</div>
 
                     {/* Content Section */}
                     <AnimatePresence mode="wait">

@@ -9,32 +9,51 @@ export default function About() {
     const statsRef = useRef([]);
 
     useLayoutEffect(() => {
-        let ctx = gsap.context(() => {
-            gsap.from(headingRef.current, { opacity: 0, y: -50, duration: 1, ease: "power3.out" });
-            gsap.from(textRef.current, { opacity: 0, y: 50, duration: 1, delay: 0.5, ease: "power3.out" });
+        const ctx = gsap.context(() => {
+            gsap.fromTo(
+                headingRef.current,
+                { opacity: 0, y: -50 },
+                { opacity: 1, y: 0, duration: 1, ease: "power3.out" }
+            );
+
+            gsap.fromTo(
+                textRef.current,
+                { opacity: 0, y: 50 },
+                { opacity: 1, y: 0, duration: 1, delay: 0.5, ease: "power3.out" }
+            );
 
             statsRef.current.forEach((stat, index) => {
                 if (stat) {
-                    gsap.from(stat, {
-                        opacity: 0,
-                        y: 30,
-                        duration: 1,
-                        delay: index * 0.3 + 1,
-                        ease: "power3.out",
-                    });
+                    // Animate card entrance
+                    gsap.fromTo(
+                        stat,
+                        { opacity: 0, y: 30 },
+                        {
+                            opacity: 1,
+                            y: 0,
+                            duration: 1,
+                            delay: index * 0.3 + 1,
+                            ease: "power3.out",
+                        }
+                    );
 
+                    // Animate number counting
                     gsap.to(stat.querySelector(".counter"), {
                         innerText: stat.dataset.value,
                         duration: 2,
                         delay: index * 0.3 + 1,
                         snap: { innerText: 1 },
                         ease: "power3.out",
+                        onUpdate: function () {
+                            const el = stat.querySelector(".counter");
+                            el.innerText = Math.floor(el.innerText);
+                        }
                     });
                 }
             });
         });
 
-        return () => ctx.revert(); // Cleanup GSAP animations on unmount
+        return () => ctx.revert(); // Clean up GSAP context
     }, []);
 
     return (
@@ -57,7 +76,9 @@ export default function About() {
                         <p className="text-gray-300 mt-4">
                             We are building a cutting-edge AI-driven solution that enables users to discuss their financial needs in real-time and make data-backed decisions confidently.
                         </p>
-                        <button className="mt-4 text-yellow-400 font-medium transition-transform transform hover:scale-105">Learn More ➜</button>
+                        <button className="mt-4 text-yellow-400 font-medium transition-transform transform hover:scale-105">
+                            Learn More ➜
+                        </button>
                     </div>
                     <div className="bg-gray-800 rounded-lg flex items-center justify-center h-48">
                         <span className="text-gray-400 text-lg">[ Video Placeholder ]</span>
@@ -65,10 +86,14 @@ export default function About() {
                 </div>
             </section>
 
-            {/* Stats Section with Animations */}
+            {/* Stats Section */}
             <section className="py-16 px-6 max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
                 {/* AI-Powered Conversations */}
-                <div ref={(el) => statsRef.current.push(el)} data-value="100" className="p-6 border border-gray-600 rounded-lg flex flex-col items-center">
+                <div
+                    ref={(el) => statsRef.current[0] = el}
+                    data-value="100"
+                    className="p-6 border border-gray-600 rounded-lg flex flex-col items-center"
+                >
                     <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <polygon points="10,90 50,10 90,90" stroke="yellow" strokeWidth="4" fill="none" />
                     </svg>
@@ -77,7 +102,11 @@ export default function About() {
                 </div>
 
                 {/* Data-Driven Insights */}
-                <div ref={(el) => statsRef.current.push(el)} data-value="100" className="p-6 border border-gray-600 rounded-lg flex flex-col items-center">
+                <div
+                    ref={(el) => statsRef.current[1] = el}
+                    data-value="100"
+                    className="p-6 border border-gray-600 rounded-lg flex flex-col items-center"
+                >
                     <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                             <pattern id="dots" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
@@ -91,7 +120,11 @@ export default function About() {
                 </div>
 
                 {/* User Satisfaction */}
-                <div ref={(el) => statsRef.current.push(el)} data-value="98" className="p-6 border border-gray-600 rounded-lg flex flex-col items-center">
+                <div
+                    ref={(el) => statsRef.current[2] = el}
+                    data-value="98"
+                    className="p-6 border border-gray-600 rounded-lg flex flex-col items-center"
+                >
                     <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <polygon points="50,5 61,35 95,35 67,55 78,85 50,65 22,85 33,55 5,35 39,35" stroke="yellow" strokeWidth="4" fill="none" />
                     </svg>
