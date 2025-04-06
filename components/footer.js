@@ -6,10 +6,11 @@ const Footer = () => {
     <footer className="bg-gray-900 text-gray-300 py-8 px-4 mt-10">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Brand */}
+        {/*hiii*/}
         <div>
           <h2 className="text-2xl font-bold text-white">triphla</h2>
           <p className="mt-2 text-sm text-gray-400">
-             The one stop platform for investing with AI powerd companions. Confidential, secure, and always available.
+             The one stop platform for investing with AI-powered companions. Confidential, secure, and always available.
           </p>
         </div>
 
