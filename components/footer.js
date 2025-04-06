@@ -10,7 +10,7 @@ const Footer = () => {
         <div>
           <h2 className="text-2xl font-bold text-white">triphla</h2>
           <p className="mt-2 text-sm text-gray-400">
-             The one stop platform for investing with AI powerd companions. Confidential, secure, and always available.
+             The one stop platform for investing with AI-powered companions. Confidential, secure, and always available.
           </p>
         </div>
 
