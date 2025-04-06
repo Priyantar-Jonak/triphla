@@ -1,4 +1,4 @@
-import axios from "axios"; // Keep axios if other parts need it, or remove if unused after changes.
+import axios from "axios";
 import Navbar from "@/components/Navbar";
 import { SignedOut } from "@clerk/nextjs";
 import Card from "@/components/cards";
@@ -12,62 +12,57 @@ import BidirectionalSlider from "@/components/bidirectionalslider";
 import { Newspaper } from "lucide-react";
 // Removed useState and useEffect
 
-const NEWS_API= process.VITE_NEWS_API || "https://triphla-yv9t.onrender.com/api/stock-news";
 async function fetchNews() {
   try {
-    // Using fetch API for server-side fetching and revalidation (ISR)
     const response = await fetch(NEWS_API, {
-      method: 'POST', // Assuming POST is required as per original code
+      method: 'POST',
       headers: {
-        'Content-Type': 'application/json', // Add headers if needed by the API
+        'Content-Type': 'application/json',
       },
-      // Add body if the POST request needs data: body: JSON.stringify({ key: 'value' })
-      next: { revalidate: 3600 } // Revalidate every hour (3600 seconds)
+      next: { revalidate: 3600 }
     });
 
     if (!response.ok) {
-      // Log detailed error for server-side debugging
       console.error(`Error fetching stock news: ${response.status} ${response.statusText}`);
       const errorBody = await response.text();
       console.error("Error body:", errorBody);
-      return null; // Return null or throw an error
+      return null;
     }
     const newsData = await response.json();
     console.log(newsData);
     return newsData;
   } catch (error) {
     console.error("Error fetching stock news:", error);
-    return null; // Return null or handle error appropriately
+    return null;
   }
 }
 
 export default async function Home() {
-  const news = await fetchNews(); // Fetch data on the server
-  const newsArr= JSON.parse(news); // Parse the news data
-  console.log("Parsed news data:", typeof(newsArr)); // Log the parsed data
+  const news = await fetchNews();
+  const newsArr = JSON.parse(news || "[]");
+  console.log("Parsed news data:", typeof newsArr);
 
   return (
-    
-
     <div className="w-full">
-      <div data-theme="coffee" className="relative overflow-hidden  h-[80vh] rounded-xl">
+      {/* Hero Section */}
+      <div data-theme="coffee" className="relative overflow-hidden h-[80vh] rounded-xl">
         <div className="absolute inset-0 z-0">
           <Squares />
         </div>
-      
-        {/* <StockNews/> This will fetch and log the stock news */}
-        <main className="z-2 top-16 relative place-items-center">
-          <div className="grid w-[70vw] h-1 place-items-center">
-            <div className="leading-none h-[14vh] rounded-t-[3vw] rounded-b-[3vw]">
-              <h1 className="text-7xl text-center">Your AI partner</h1>
-            </div>
-            <div className="leading-none -mt-3 h-[14vh] rounded-b-[2vw]">
-              <h1 className="text-7xl text-center">for all things</h1>
-            </div>
-            <div className="leading-none -mt-3 h-[12vh] flex rounded-b-[2vw] justify-center">
-              <div>
-                <h1 className="text-7xl text-center">crypto</h1>
-              </div>
+
+        <main className="z-2 top-16 relative grid place-items-center px-4 md:px-8">
+          <div className="grid w-full max-w-6xl gap-3 text-center">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold">
+            Think Smarter
+            </h1>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold">
+            Invest Wiser
+            </h1>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold">
+            with triphla
+            </h1>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-2">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold"></h1>
               <Link href="/interface">
                 <OutlineButton />
               </Link>
@@ -76,50 +71,15 @@ export default async function Home() {
         </main>
       </div>
 
+      {/* News Section */}
+      <div className="w-full px-4 md:px-8 mt-10">
+        <BidirectionalSlider news={newsArr} />
+      </div>
 
-      <div className="w-full">
-          {/* <h2 className="text-5xl font-bold text-center my-8">Latest News</h2> Added a title */}
-          {/* Pass fetched news data to the slider */}
-          {/*news ? <BidirectionalSlider news={news} /> : <p>Loading news...</p>*/}
-          {/* If BidirectionalSlider also needs images, pass them too */}
-          <BidirectionalSlider  news={newsArr} />
-        </div>
-      {/* <div className="flex gap-3  mb-3">
-        <div className="relative rounded-xl w-[45vw] h-[25.6vw] overflow-hidden">
-          <Image
-            src="/bitc.jpeg"
-            alt="Dall"
-            layout="fill"
-            objectFit="cover"
-            className="opacity-60"
-          />
-          <div className="absolute pl-16 right-0 w-[27.5vw] h-full">
-            <span data-theme="coffee" className="mt-12 opacity-90 flex items-center justify-center w-10 h-10 rounded-full">
-              <i className="ri-chat-ai-fill"></i>
-            </span>
-            <div className="pb-10">
-              <Typing />
-              <div data-theme="coffee" className="opacity-90 absolute text-xs flex items-center justify-between rounded-full mb-5 px-5 bottom-0 w-[18.5vw] h-[5vh]">
-                LEARN MORE
-                <Link href="/about">
-                  <i className="ri-add-fill"></i>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div className="flex gap-3">
-          <Card id="1" />
-          <Card id="2" />
-        </div>
-      </div> */}
-      {/* <div className="absolute mb-3 mx-3 rounded-xl overflow-hidden"> */}
+      {/* Timeline Section */}
+      <div className="w-full px-4 md:px-8 mt-12">
         <TimelineDemo />
       {/* </div> */}
     </div>
-    
-    
-    
   );
 }
