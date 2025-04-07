@@ -16,67 +16,73 @@ export function TimelineDemo() {
   const data = [
     {
       title: " STEP-1 ",
-      
       content: (
         <div>
           <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
-          <strong>Your AI-Powered Guide to Smart Crypto and Stock Market Decisions</strong>
+            <strong>🎉 Congratulations on Taking Your First Step Towards Smart Investing! 🎉</strong>
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-4">
             <Image
               src={step1pic1}
-              alt="startup template"
+              alt="Real-time market dashboard"
               width={500}
               height={500}
               className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
             />
             <Image
               src={step1pic2}
-              alt="startup template"
+              alt="Portfolio analysis"
               width={500}
               height={500}
               className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
             />
+            <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg border border-green-200 dark:border-green-800">
+              <p className="text-green-800 dark:text-green-200 text-sm font-medium">
+                Welcome to Triphla! You&apos;ve just completed Step 1 by exploring our platform. 
+                You&apos;re now on your way to mastering smart investment strategies! 🚀
+              </p>
+            </div>
+
+            <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-200 dark:border-blue-800">
+              <p className="text-blue-800 dark:text-blue-200 text-sm font-medium">
+                What&apos;s Next? Discover our powerful tools and features designed specifically for Indian investors like you! 
+              </p>
+            </div>
+
             <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mt-4 leading-relaxed">
-  <span className="text-lg md:text-xl font-semibold text-primary">Real-Time Market Insights at Your Fingertips</span>
-  <br /><br />
-  The financial assistant provides <span className="font-medium text-green-600">Live Updates</span> on major cryptocurrencies, offering traders and investors <span className="text-highlight">quick and accurate</span> market insights. This includes:
-</p>
+              <span className="text-lg md:text-xl font-semibold text-primary">Your Journey to Smart Investing Begins Here</span>
+              <br /><br />
+              Get ready to experience our comprehensive suite of tools, including <span className="font-medium text-green-600">Live Updates</span> on major Indian indices and stocks:
+            </p>
 
-<ul className="list-disc list-inside text-sm md:text-base mt-2 text-neutral-700 dark:text-neutral-300">
-  <li><span className="font-semibold text-primary">Bitcoin (BTC)</span></li>
-  <li><span className="font-semibold text-primary">Ethereum (ETH)</span></li>
-  <li><span className="font-semibold text-primary">Tether (USDT)</span></li>
-  <li><span className="font-semibold text-primary">Binance Coin (BNB)</span></li>
-</ul>
+            <ul className="list-disc list-inside text-sm md:text-base mt-2 text-neutral-700 dark:text-neutral-300">
+              <li><span className="font-semibold text-primary">NIFTY 50</span> - Track India&apos;s leading index</li>
+              <li><span className="font-semibold text-primary">SENSEX</span> - Monitor BSE&apos;s performance</li>
+              <li><span className="font-semibold text-primary">Bank NIFTY</span> - Follow banking sector trends</li>
+              <li><span className="font-semibold text-primary">Top Indian Stocks</span> - Watch market leaders</li>
+            </ul>
 
-<p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mt-4 leading-relaxed">
-  Each cryptocurrency is displayed with <span className="font-medium text-highlight">real-time price data</span>, percentage changes, and recognizable logos—transforming the platform into a powerful <span className="font-semibold text-indigo-600">Financial Command Center.</span>
-</p>
+            <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg shadow-md mt-6">
+              <h3 className="text-lg md:text-xl font-semibold text-primary">Your Investment Journey Starts Here</h3>
+              <p className="text-sm md:text-base mt-2 text-neutral-700 dark:text-neutral-300">
+                As you begin your journey with us, you&apos;ll gain access to:
+              </p>
 
-<div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg shadow-md mt-6">
-  <h3 className="text-lg md:text-xl font-semibold text-primary"> Why This Matters</h3>
-  <p className="text-sm md:text-base mt-2 text-neutral-700 dark:text-neutral-300">
-    These AI-powered finance tools empower users by eliminating guesswork and enhancing portfolio strategies. Whether you are a <span className="font-medium text-highlight">seasoned investor</span> or just starting out, this system ensures:
-  </p>
-
-  <ul className="list-none mt-3 space-y-2">
-    <li className="flex items-center">
-      <span className="text-green-500 font-semibold">✔️ Convenience:</span>
-      <span className="ml-2">Ask any question, get instant answers.</span>
-    </li>
-    <li className="flex items-center">
-      <span className="text-blue-500 font-semibold">✔️ Accuracy:</span>
-      <span className="ml-2">Live data from trusted financial sources.</span>
-    </li>
-    <li className="flex items-center">
-      <span className="text-yellow-500 font-semibold">✔️ Personalization:</span>
-      <span className="ml-2">Tailored suggestions based on your interests.</span>
-    </li>
-  </ul>
-</div>
-
-            
+              <ul className="list-none mt-3 space-y-2">
+                <li className="flex items-center">
+                  <span className="text-green-500 font-semibold">✨ Expert Analysis:</span>
+                  <span className="ml-2">Real-time market insights tailored for Indian investors.</span>
+                </li>
+                <li className="flex items-center">
+                  <span className="text-blue-500 font-semibold">📊 Smart Tracking:</span>
+                  <span className="ml-2">Monitor your portfolio with advanced analytics.</span>
+                </li>
+                <li className="flex items-center">
+                  <span className="text-yellow-500 font-semibold">🤖 AI Guidance:</span>
+                  <span className="ml-2">Get personalized recommendations for your investment goals.</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       ),
@@ -86,9 +92,80 @@ export function TimelineDemo() {
       content: (
         <div>
           <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
-          <strong>Explore Our Interface – A Seamless Experience for Smarter Financial Decisions</strong>
+            <strong>🎓 Fantastic Progress! You're Now Ready to Master Financial Concepts! 🌟</strong>
           </p>
           
+          <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-200 dark:border-blue-800 mb-6">
+            <p className="text-blue-800 dark:text-blue-200 text-sm font-medium">
+              Congratulations on reaching the learning phase! Get ready to enhance your financial knowledge through our interactive learning module. 📚
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 gap-4">
+            <Image
+              src={step4pic1}
+              alt="hero template"
+              width={500}
+              height={500}
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+             
+            <Image
+              src={step4pic2}
+              alt="feature template"
+              width={500}
+              height={500}
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+             
+             <Image
+              src={step4pic3}
+              alt="feature template"
+              width={500}
+              height={500}
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+             <Image
+              src={step4pic4}
+              alt="feature template"
+              width={500}
+              height={500}
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+           
+          </div>
+          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mt-4">
+            <strong>Your Path to Financial Wisdom Begins Here! 🚀</strong>
+            <br /><br />
+            <strong>Financial Learning Module &ndash; Interactive &amp; Engaging Financial Education</strong>  
+            <br /><br />
+            🔹 <strong>Introduction to the Stock Market</strong> &ndash; This section provides a comprehensive overview of the stock market, detailing its functions and significance in the global economy. Users gain insights into key benefits such as capital growth, diversification, and dividend income, while also understanding potential risks like market volatility and economic downturns.  
+            <br /><br />
+            🔹 <strong>Fun Facts &amp; Insights</strong> &ndash; Explore fascinating financial facts that make learning enjoyable. This section presents historical insights, including the establishment of the first stock exchange in Amsterdam in 1602, and explains why a rising market is referred to as a &ldquo;bull market.&rdquo; These engaging facts enhance financial awareness and spark curiosity.  
+            <br /><br />
+            🔹 <strong>Interactive Quiz</strong> &ndash; Reinforce knowledge through a multiple-choice quiz covering essential financial topics such as stock definitions, market capitalization, and investment principles. This interactive approach ensures better retention and deeper understanding.  
+            <br /><br />
+            🔹 <strong>Term Matching Activity</strong> &ndash; Strengthen financial vocabulary through an interactive matching exercise. Users connect key financial terms such as &ldquo;stock market,&rdquo; &ldquo;dividend,&rdquo; &ldquo;bull market,&rdquo; and &ldquo;bear market&rdquo; with their correct definitions, making complex concepts easier to grasp.  
+            <br /><br />
+            With structured content, engaging visuals, and hands-on exercises, the Financial Learning Module serves as a valuable tool for individuals looking to improve their financial literacy in an accessible and effective way.  
+          </p>
+        </div>
+      ),
+    },
+    {
+      title: "STEP-3",
+      content: (
+        <div>
+          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
+            <strong>🌟 Outstanding! You're Now Ready to Access Your Smart Investment Dashboard! 📊</strong>
+          </p>
+          
+          <div className="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg border border-purple-200 dark:border-purple-800 mb-6">
+            <p className="text-purple-800 dark:text-purple-200 text-sm font-medium">
+              Amazing progress! You've mastered the basics, and now it's time to explore your personalized AI-powered dashboard. Let's make your investments work smarter! 💪
+            </p>
+          </div>
+
           <div className="grid grid-cols-2 gap-4">
             <Image
               src={step2pic1}
@@ -116,7 +193,109 @@ export function TimelineDemo() {
       ),
     },
     {
-      title: "STEP-3",
+      title: "STEP-3.5",
+      content: (
+        <div>
+          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
+            <strong>🤖 Have Questions? Your AI Financial Assistant is Here to Help! 💡</strong>
+          </p>
+
+          <div className="bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 p-6 rounded-lg border border-indigo-200 dark:border-indigo-800 mb-6">
+            <h3 className="text-lg font-semibold text-indigo-800 dark:text-indigo-200 mb-3">
+              🎯 Before Moving to Your Personalized Plan
+            </h3>
+            <p className="text-neutral-700 dark:text-neutral-300">
+              Take a moment to clear any doubts with our AI-powered financial assistant. We're here to ensure you're fully confident in your investment journey!
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+              <h4 className="text-lg font-semibold text-primary mb-4">
+                Ask About Anything! 🗣️
+              </h4>
+              <ul className="space-y-3">
+                <li className="flex items-center">
+                  <span className="text-green-500 mr-2">💬</span>
+                  <span>"How do I analyze market trends?"</span>
+                </li>
+                <li className="flex items-center">
+                  <span className="text-blue-500 mr-2">💬</span>
+                  <span>"What's the best investment strategy for me?"</span>
+                </li>
+                <li className="flex items-center">
+                  <span className="text-purple-500 mr-2">💬</span>
+                  <span>"Explain mutual funds vs. stocks"</span>
+                </li>
+                <li className="flex items-center">
+                  <span className="text-yellow-500 mr-2">💬</span>
+                  <span>"How to diversify my portfolio?"</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-gradient-to-b from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 p-6 rounded-lg">
+              <h4 className="text-lg font-semibold text-blue-800 dark:text-blue-200 mb-4">
+                Why Use Our AI Assistant? ��
+              </h4>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <span className="text-blue-500 text-lg mr-2">✨</span>
+                  <span>24/7 instant responses to your queries</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-blue-500 text-lg mr-2">✨</span>
+                  <span>Personalized advice based on your profile</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-blue-500 text-lg mr-2">✨</span>
+                  <span>Up-to-date market insights and analysis</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-blue-500 text-lg mr-2">✨</span>
+                  <span>Simple explanations for complex topics</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="col-span-2 bg-green-50 dark:bg-green-900/20 p-6 rounded-lg border border-green-200 dark:border-green-800">
+              <h4 className="text-lg font-semibold text-green-800 dark:text-green-200 mb-3">
+                🎉 Ready to Chat?
+              </h4>
+              <p className="text-neutral-700 dark:text-neutral-300 mb-4">
+                Our AI assistant is trained on the latest Indian market data and can help you with:
+              </p>
+              <ul className="grid grid-cols-2 gap-4">
+                <li className="flex items-center">
+                  <span className="text-green-600 mr-2">🎯</span>
+                  <span>NIFTY & SENSEX analysis</span>
+                </li>
+                <li className="flex items-center">
+                  <span className="text-green-600 mr-2">🎯</span>
+                  <span>Sector-specific insights</span>
+                </li>
+                <li className="flex items-center">
+                  <span className="text-green-600 mr-2">🎯</span>
+                  <span>Risk assessment</span>
+                </li>
+                <li className="flex items-center">
+                  <span className="text-green-600 mr-2">🎯</span>
+                  <span>Investment strategies</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="col-span-2 bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg border border-yellow-200 dark:border-yellow-800 mt-4">
+              <p className="text-yellow-800 dark:text-yellow-200 text-sm font-medium text-center">
+                💡 Pro Tip: The more you interact with our AI assistant, the more personalized your investment journey becomes!
+              </p>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: "STEP-4",
       content: (
         <div>
           <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-4">
@@ -213,68 +392,9 @@ export function TimelineDemo() {
 
         </div>
       ),
-    },
-    {
-      title: "STEP-4",
-      content: (
-        <div>
-          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
-          <strong>Financial Learning Module – Interactive & Engaging Financial Education</strong>
-          </p>
-          
-          <div className="grid grid-cols-2 gap-4">
-            <Image
-              src={step4pic1}
-              alt="hero template"
-              width={500}
-              height={500}
-              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-            />
-             
-            <Image
-              src={step4pic2}
-              alt="feature template"
-              width={500}
-              height={500}
-              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-            />
-             
-             <Image
-              src={step4pic3}
-              alt="feature template"
-              width={500}
-              height={500}
-              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-            />
-             <Image
-              src={step4pic4}
-              alt="feature template"
-              width={500}
-              height={500}
-              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-            />
-           
-          </div>
-          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mt-4">
-  
-  <strong>Financial Learning Module &ndash; Interactive &amp; Engaging Financial Education</strong>  
-  <br /><br />
-  The Financial Learning Module offers an engaging and interactive approach to understanding key financial concepts. Through structured content and hands-on activities, users can enhance their financial literacy while enjoying the learning process.  
-  <br /><br />
-  🔹 <strong>Introduction to the Stock Market</strong> &ndash; This section provides a comprehensive overview of the stock market, detailing its functions and significance in the global economy. Users gain insights into key benefits such as capital growth, diversification, and dividend income, while also understanding potential risks like market volatility and economic downturns.  
-  <br /><br />
-  🔹 <strong>Fun Facts &amp; Insights</strong> &ndash; Explore fascinating financial facts that make learning enjoyable. This section presents historical insights, including the establishment of the first stock exchange in Amsterdam in 1602, and explains why a rising market is referred to as a &ldquo;bull market.&rdquo; These engaging facts enhance financial awareness and spark curiosity.  
-  <br /><br />
-  🔹 <strong>Interactive Quiz</strong> &ndash; Reinforce knowledge through a multiple-choice quiz covering essential financial topics such as stock definitions, market capitalization, and investment principles. This interactive approach ensures better retention and deeper understanding.  
-  <br /><br />
-  🔹 <strong>Term Matching Activity</strong> &ndash; Strengthen financial vocabulary through an interactive matching exercise. Users connect key financial terms such as &ldquo;stock market,&rdquo; &ldquo;dividend,&rdquo; &ldquo;bull market,&rdquo; and &ldquo;bear market&rdquo; with their correct definitions, making complex concepts easier to grasp.  
-  <br /><br />
-  With structured content, engaging visuals, and hands-on exercises, the Financial Learning Module serves as a valuable tool for individuals looking to improve their financial literacy in an accessible and effective way.  
-</p>
-
-        </div>
-      ),
     }
+    
+    
   ];
   return (
     <div className="min-h-screen w-full">
