@@ -23,7 +23,17 @@ export default function QuizComponent() {
                 num_questions: 5,
                 topic: "finance"
             });
-            setQuestions(response.data[0]);
+            
+            // Validate and clean the data
+            const cleanedQuestions = response.data[0].map(q => ({
+                ...q,
+                question: q.question.trim(),
+                correct_option: q.correct_option.trim(),
+                options: q.options.map(opt => opt.trim()),
+                answer_explanation: q.answer_explanation.trim()
+            }));
+            
+            setQuestions(cleanedQuestions);
             setCurrentQuestion(0);
             setScore(0);
             setShowResults(false);
@@ -37,12 +47,18 @@ export default function QuizComponent() {
         }
     };
 
-    const handleAnswer = (selectedOption) => {
+    const handleAnswer = (selectedOption, index) => {
         const currentQ = questions[currentQuestion];
         setSelectedAnswer(selectedOption);
         setShowExplanation(true);
 
-        if (selectedOption === currentQ.correct_option) {
+        // Convert index to letter (0 = 'A', 1 = 'B', etc.)
+        const selectedLetter = String.fromCharCode(65 + index);
+        
+        console.log('Selected Letter:', selectedLetter);
+        console.log('Correct Answer:', currentQ.correct_option);
+
+        if (selectedLetter === currentQ.correct_option) {
             setScore(score + 1);
         }
     };
@@ -57,11 +73,12 @@ export default function QuizComponent() {
         }
     };
 
-    const getOptionStyle = (option) => {
+    const getOptionStyle = (option, index) => {
         if (!selectedAnswer) return "border border-base-300 hover:bg-base-300";
         
         const currentQ = questions[currentQuestion];
-        const isCorrect = option === currentQ.correct_option;
+        const optionLetter = String.fromCharCode(65 + index);
+        const isCorrect = optionLetter === currentQ.correct_option;
         const isSelected = option === selectedAnswer;
         
         if (isCorrect) {
@@ -125,6 +142,21 @@ export default function QuizComponent() {
 
     const currentQ = questions[currentQuestion];
 
+    // Add validation before rendering
+    if (!currentQ || !currentQ.options) {
+        return (
+            <div className="text-center p-4">
+                <p className="text-error mb-4">Invalid question data received.</p>
+                <button 
+                    className="btn btn-primary"
+                    onClick={generateQuiz}
+                >
+                    Try Again
+                </button>
+            </div>
+        );
+    }
+
     return (
         <div className="max-w-2xl mx-auto p-4">
             <div className="mb-4">
@@ -150,11 +182,11 @@ export default function QuizComponent() {
                     {currentQ.options.map((option, index) => (
                         <button
                             key={index}
-                            className={`w-full text-left p-3 rounded-lg transition-colors ${getOptionStyle(option)}`}
-                            onClick={() => !selectedAnswer && handleAnswer(option)}
+                            className={`w-full text-left p-3 rounded-lg transition-colors ${getOptionStyle(option, index)}`}
+                            onClick={() => !selectedAnswer && handleAnswer(option, index)}
                             disabled={!!selectedAnswer}
                         >
-                            {option}
+                            {String.fromCharCode(65 + index)}. {option}
                         </button>
                     ))}
                 </div>

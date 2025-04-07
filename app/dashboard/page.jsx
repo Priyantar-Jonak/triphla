@@ -30,44 +30,44 @@ export default function PortfolioDashboard() {
   }, [user?.imageUrl]);
 
 
-  // Mock data - replace with actual data fetching if needed
+  // Updated mock data for Indian market
   const userProfile = {
-    age: 32, // Example age
-    dematAccounts: ["Zerodha", "Groww"], // Example accounts
+    age: 32,
+    dematAccounts: ["Zerodha", "Groww", "Upstox"], // Common Indian brokers
   };
 
   const portfolio = {
-    totalValue: "$50,000",
+    totalValue: "₹38,50,000", // Changed to INR
     dailyChange: "-1.5%",
     weeklyChange: "+2.3%",
     riskLevel: "High",
     diversification: "Moderate",
     marketSentiment: "Bullish",
     assetAllocation: [
-      { name: "Stocks", value: 60 },
-      { name: "Mutual Funds", value: 20 },
-      { name: "ETFs", value: 15 },
-      { name: "Crypto", value: 5 },
+      { name: "Stocks", value: 55 },
+      { name: "Mutual Funds", value: 25 },
+      { name: "Fixed Deposits", value: 15 }, // Added FDs, common in India
+      { name: "Gold", value: 5 }, // Added Gold, popular in India
     ],
     sectors: [
-      { name: "Tech", value: 40 },
-      { name: "Finance", value: 20 },
-      { name: "Energy", value: 15 },
-      { name: "Health", value: 10 },
-      { name: "Others", value: 15 },
+      { name: "IT", value: 35 },
+      { name: "Banking", value: 25 },
+      { name: "FMCG", value: 15 },
+      { name: "Pharma", value: 15 },
+      { name: "Others", value: 10 },
     ],
     holdings: [
-      { ticker: "AAPL", price: "$150", change: "2%", risk: "Low", sentiment: "Bullish", action: "Hold" },
-      { ticker: "TSLA", price: "$700", change: "-3%", risk: "High", sentiment: "Bearish", action: "Review" },
-      { ticker: "GOOGL", price: "$2800", change: "1.2%", risk: "Medium", sentiment: "Neutral", action: "Hold" },
-      { ticker: "MSFT", price: "$320", change: "4.5%", risk: "Low", sentiment: "Bullish", action: "Buy More" },
-      { ticker: "AMZN", price: "$3300", change: "-2.1%", risk: "Medium", sentiment: "Neutral", action: "Hold" },
+      { ticker: "RELIANCE", price: "₹2,450", change: "2%", risk: "Low", sentiment: "Bullish", action: "Hold" },
+      { ticker: "TCS", price: "₹3,800", change: "-1.2%", risk: "Low", sentiment: "Neutral", action: "Buy More" },
+      { ticker: "HDFCBANK", price: "₹1,680", change: "1.5%", risk: "Low", sentiment: "Bullish", action: "Hold" },
+      { ticker: "INFY", price: "₹1,420", change: "-2.1%", risk: "Medium", sentiment: "Neutral", action: "Hold" },
+      { ticker: "BAJFINANCE", price: "₹7,200", change: "3.2%", risk: "High", sentiment: "Bullish", action: "Review" },
     ],
     aiInsights: [
-      "Your portfolio is heavily concentrated in Tech stocks. Consider diversifying into Energy & FMCG sectors.",
-      "TSLA has dropped 5% this week. AI suggests reviewing its performance.",
-      "Your portfolio's risk level is HIGH due to volatile assets. Consider rebalancing.",
-      "Market sentiment is Bullish overall, with strong momentum in Tech sector.",
+      "Your portfolio has high exposure to IT sector. Consider diversifying into FMCG & Manufacturing.",
+      "Bank Nifty showing strong momentum. Consider increasing allocation to banking stocks.",
+      "FD rates are increasing. Consider locking some funds in high-yield FDs.",
+      "Gold prices are volatile. Consider SGB (Sovereign Gold Bonds) for gold exposure.",
     ],
   };
 
@@ -155,7 +155,9 @@ export default function PortfolioDashboard() {
             <h1 className="text-xl md:text-2xl font-semibold">
               Welcome, {user ? user.firstName || user.fullName : 'User'}!
             </h1>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Here's your financial overview.</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">
+              Track your Indian market investments here
+            </p>
           </div>
         </div>
 
@@ -167,7 +169,7 @@ export default function PortfolioDashboard() {
            </div>
            <div className="flex items-center space-x-1">
              <Briefcase size={16} />
-              <span>Accounts: {userProfile.dematAccounts.join(', ')}</span> {/* Note: This is still mock data */}
+              <span>Demat: {userProfile.dematAccounts.join(', ')}</span> {/* Note: This is still mock data */}
             </div>
           </div>
        </div>

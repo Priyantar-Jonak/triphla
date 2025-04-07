@@ -80,8 +80,17 @@ export default function About() {
                             Learn More ➜
                         </button>
                     </div>
-                    <div className="bg-gray-800 rounded-lg flex items-center justify-center h-48">
-                        <span className="text-gray-400 text-lg">[ Video Placeholder ]</span>
+                    <div className="bg-gray-800 rounded-lg  flex items-center justify-center h-48">
+                        {/* <span className="text-gray-400 text-lg"> */}
+                        <div className="relative w-full border-2 rounded-lg pb-[56.25%] h-0">
+                          <iframe
+                            src="https://streamable.com/e/arupx4?autoplay=1"
+                            allow="fullscreen; autoplay"
+                            allowFullScreen
+                            className="absolute top-0 left-0 w-full h-full border-2 rounded-lg overflow-hidden"
+                          ></iframe>
+                        </div>
+                        {/* </span> */}
                     </div>
                 </div>
             </section>

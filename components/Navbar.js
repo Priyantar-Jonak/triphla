@@ -125,7 +125,7 @@ export default function Navbar() {
             <Link
               key={item}
               href={`/${item.toLowerCase() === "home" ? "" : item.toLowerCase()}`}
-              className="text-sm font-medium text-white/80 hover:text-primary transition-all duration-200"
+              className="text-sm font-medium text-white/80 dark:text-black hover:text-primary transition-all duration-200"
               onClick={() => setMenuOpen(false)}
             >
               {item}
