@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { SignInButton, UserButton, SignedIn, SignedOut } from "@clerk/nextjs";
 import { ThemeToggleButton } from "./ui/theme-toggle-button";
+import AudioPlayer from './AudioPlayer';
 
 export default function Navbar() {
   const navbarRef = useRef(null);
@@ -103,8 +104,9 @@ export default function Navbar() {
         </svg>
       </button>
 
-      {/* User Actions */}
+      {/* Desktop User Actions */}
       <div ref={actionsRef} className="hidden md:flex items-center space-x-2 md:space-x-4">
+        <AudioPlayer />
         <SignedOut>
           <div className="rounded-full bg-primary/90 hover:bg-primary px-3 py-1 text-sm text-primary-foreground shadow-sm hover:shadow-md transition-all duration-200">
             <SignInButton mode="modal">Sign In</SignInButton>
@@ -118,30 +120,84 @@ export default function Navbar() {
         <ThemeToggleButton />
       </div>
 
+      {/* Persistent Mobile AudioPlayer (hidden on desktop) */}
+      <div className="hidden">
+        <AudioPlayer />
+      </div>
+
       {/* Mobile Dropdown Menu */}
       {menuOpen && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-background border border-border rounded-xl shadow-lg p-4 flex flex-col space-y-3 md:hidden z-50">
-          {navLinks.map((item) => (
-            <Link
-              key={item}
-              href={`/${item.toLowerCase() === "home" ? "" : item.toLowerCase()}`}
-              className="text-sm font-medium text-white/80 dark:text-black hover:text-primary transition-all duration-200"
-              onClick={() => setMenuOpen(false)}
-            >
-              {item}
-            </Link>
-          ))}
+        <div className="absolute top-full left-0 right-0 mt-2 bg-white/10 dark:bg-gray-800/90 backdrop-blur-lg border border-gray-200/20 dark:border-gray-700/30 rounded-xl shadow-lg p-4 md:hidden z-50">
+          <div className="flex flex-col divide-y divide-gray-200/20 dark:divide-gray-700/30">
+            {navLinks.map((item, index) => (
+              <div key={item} className={`py-3 ${index === 0 ? '' : ''}`}>
+                <Link
+                  href={`/${item.toLowerCase() === "home" ? "" : item.toLowerCase()}`}
+                  className="flex items-center space-x-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-all duration-200"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {/* Icons for each link */}
+                  <span className="w-5 h-5">
+                    {item === "Home" && (
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                      </svg>
+                    )}
+                    {item === "Interface" && (
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="3" y1="9" x2="21" y2="9"></line>
+                        <line x1="9" y1="21" x2="9" y2="9"></line>
+                      </svg>
+                    )}
+                    {item === "Dashboard" && (
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                      </svg>
+                    )}
+                    {item === "Learn" && (
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                      </svg>
+                    )}
+                    {item === "About" && (
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                      </svg>
+                    )}
+                  </span>
+                  <span>{item}</span>
+                </Link>
+              </div>
+            ))}
+          </div>
 
-          <div className="flex justify-between items-center mt-2">
-            <SignedOut>
-              <SignInButton mode="modal">
-                <span className="text-sm text-primary">Sign In</span>
-              </SignInButton>
-            </SignedOut>
-            <SignedIn>
-              <UserButton afterSignOutUrl="/" />
-            </SignedIn>
-            <ThemeToggleButton />
+          {/* Actions Section with Gradient Divider */}
+          <div className="relative mt-4 pt-4">
+            {/* Gradient Divider */}
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-200/50 dark:via-gray-700/50 to-transparent"></div>
+            
+            <div className="flex items-center justify-between space-x-4 px-2">
+              <AudioPlayer />
+              <SignedOut>
+                <SignInButton mode="modal">
+                  <span className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-primary rounded-full hover:bg-primary/90 transition-colors duration-200">
+                    Sign In
+                  </span>
+                </SignInButton>
+              </SignedOut>
+              <SignedIn>
+                <UserButton afterSignOutUrl="/" />
+              </SignedIn>
+              <ThemeToggleButton />
+            </div>
           </div>
         </div>
       )}
