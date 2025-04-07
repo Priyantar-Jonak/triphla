@@ -1,10 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 
 export default function AudioPlayer() {
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
   const audioRef = useRef(null);
 
-  // Use a static audio element that persists across renders
   useEffect(() => {
     if (!window.globalAudio) {
       window.globalAudio = new Audio('/bgm.mp3');
@@ -13,36 +12,63 @@ export default function AudioPlayer() {
     }
     audioRef.current = window.globalAudio;
 
-    // Try to autoplay
     const playAudio = async () => {
       try {
         if (audioRef.current) {
-          await audioRef.current.play();
-          setIsMuted(false);
+          audioRef.current.volume = 1;
+          const playPromise = audioRef.current.play();
+          if (playPromise !== undefined) {
+            playPromise
+              .then(() => {
+                setIsMuted(false);
+                console.log('Autoplay successful');
+              })
+              .catch(error => {
+                setIsMuted(true);
+                console.log('Autoplay prevented:', error);
+              });
+          }
         }
       } catch (error) {
-        console.log("Autoplay prevented:", error);
+        console.log("Audio setup error:", error);
         setIsMuted(true);
       }
     };
+
     playAudio();
 
-    // Cleanup
+    const handleFirstClick = () => {
+      if (audioRef.current && audioRef.current.paused) {
+        playAudio();
+      }
+      document.removeEventListener('click', handleFirstClick);
+    };
+
+    document.addEventListener('click', handleFirstClick);
+
     return () => {
-      // Don't stop the audio on unmount, just update the ref
-      audioRef.current = null;
+      document.removeEventListener('click', handleFirstClick);
     };
   }, []);
 
   const toggleMute = () => {
     if (window.globalAudio) {
       if (isMuted) {
-        window.globalAudio.play();
-        window.globalAudio.muted = false;
+        const playPromise = window.globalAudio.play();
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              window.globalAudio.muted = false;
+              setIsMuted(false);
+            })
+            .catch(error => {
+              console.log('Play prevented:', error);
+            });
+        }
       } else {
         window.globalAudio.muted = true;
+        setIsMuted(true);
       }
-      setIsMuted(!isMuted);
     }
   };
 
