@@ -57,7 +57,7 @@ export default function About() {
     }, []);
 
     return (
-        <div className="min-h-screen w-screen bg-gradient-to-r from-black via-gray-900 to-[#C59F60] text-white overflow-auto">
+        <div className="min-h-screen w-full bg-gradient-to-r from-black via-gray-900 to-[#C59F60] text-white overflow-hidden">
             {/* Hero Section */}
             <section className="h-screen flex flex-col items-center justify-center text-center px-6">
                 <h1 ref={headingRef} className="text-5xl font-bold max-w-4xl leading-tight">
@@ -84,11 +84,13 @@ export default function About() {
                         {/* <span className="text-gray-400 text-lg"> */}
                         <div className="relative w-full border-2 rounded-lg pb-[56.25%] h-0">
                           <iframe
-                            src="https://streamable.com/e/arupx4?autoplay=1"
+                            src="https://streamable.com/e/bav7f5?autoplay=1"
+                            // src="https://www.youtube.com/embed/7JgZxDNoccQ?si=ttR52-_mioFzWJ6B"
                             allow="fullscreen; autoplay"
                             allowFullScreen
                             className="absolute top-0 left-0 w-full h-full border-2 rounded-lg overflow-hidden"
-                          ></iframe>
+                            ></iframe>
+                            // <iframe width="560" height="315"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
                         {/* </span> */}
                     </div>

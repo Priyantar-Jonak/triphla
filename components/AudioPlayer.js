@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 
 export default function AudioPlayer() {
-  const [isMuted, setIsMuted] = useState(false);
+  // Start muted by default
+  const [isMuted, setIsMuted] = useState(true);
   const audioRef = useRef(null);
 
   useEffect(() => {
@@ -11,6 +12,11 @@ export default function AudioPlayer() {
       window.globalAudio.volume = 1;
     }
     audioRef.current = window.globalAudio;
+    // Ensure the audio element starts muted to match the state
+    if (audioRef.current && !audioRef.current.muted) {
+        audioRef.current.muted = true;
+    }
+
 
     const playAudio = async () => {
       try {
@@ -35,8 +41,9 @@ export default function AudioPlayer() {
       }
     };
 
-    playAudio();
+    // playAudio(); // Commented out: Prevent automatic playback on load
 
+    /* Commented out: Prevent playback on first click
     const handleFirstClick = () => {
       if (audioRef.current && audioRef.current.paused) {
         playAudio();
@@ -49,6 +56,7 @@ export default function AudioPlayer() {
     return () => {
       document.removeEventListener('click', handleFirstClick);
     };
+    */
   }, []);
 
   const toggleMute = () => {
