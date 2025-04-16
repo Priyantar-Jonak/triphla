@@ -67,13 +67,15 @@ export default function Navbar() {
       className="flex justify-between items-center px-4 md:px-6 py-2 sticky top-3 z-50 rounded-xl mx-auto max-w-[95%] bg-black/20 border border-border/20 backdrop-blur-xl transition-all duration-300"
     >
       {/* Logo Section */}
-      <div ref={logoRef} className="flex items-center px-2 md:px-3">
+      <div ref={logoRef}  className="flex items-center px-2 md:px-3">
+        <Link href="/" className="flex items-center">
         <div className="bg-white w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
-          <Image src="/dall.png" alt="Triphla Logo" width={32} height={32} />
+          <Image src="/dall.png" alt="Triphla Logo" width={40} height={40} />
         </div>
         <div className="ml-2 font-semibold text-base md:text-lg hover:text-primary transition-colors duration-300">
           triphla
         </div>
+        </Link>
       </div>
 
       {/* Desktop Navigation Links */}
