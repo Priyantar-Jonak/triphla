@@ -2,6 +2,7 @@
 
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
+import Link from "next/link";
 
 export default function About() {
     const headingRef = useRef(null);
@@ -146,9 +147,11 @@ export default function About() {
 
             {/* Call to Action */}
             <div className="py-16 flex justify-center">
-                <button className="bg-yellow-500 text-black px-8 py-4 rounded-full font-medium transition-transform transform hover:scale-110">
+                <Link href="/interface">
+                <button  className="bg-yellow-500 text-black px-8 py-4 rounded-full font-medium transition-transform transform hover:scale-110">
                     Start Your AI-Powered Journey ➜
                 </button>
+                </Link>
             </div>
         </div>
     );
