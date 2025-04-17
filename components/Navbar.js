@@ -73,7 +73,7 @@ export default function Navbar() {
           <Image src="/dall.png" alt="Triphla Logo" width={40} height={40} />
         </div>
         <div className="ml-2 font-semibold text-base md:text-lg hover:text-primary transition-colors duration-300">
-          triphla
+          Triphla
         </div>
         </Link>
       </div>

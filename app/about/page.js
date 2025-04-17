@@ -2,6 +2,7 @@
 
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
+import Link from "next/link";
 
 export default function About() {
     const headingRef = useRef(null);
@@ -81,16 +82,15 @@ export default function About() {
                         </button>
                     </div>
                     <div className="bg-gray-800 rounded-lg  flex items-center justify-center h-48">
-                        {/* <span className="text-gray-400 text-lg"> */}
+                        {/* <span className="text-gray-400 text-lg"> src="https://www.youtube.com/embed/7JgZxDNoccQ?si=ttR52-_mioFzWJ6B"*/}
                         <div className="relative w-full border-2 rounded-lg pb-[56.25%] h-0">
                           <iframe
                             src="https://streamable.com/e/bav7f5?autoplay=1"
-                            // src="https://www.youtube.com/embed/7JgZxDNoccQ?si=ttR52-_mioFzWJ6B"
                             allow="fullscreen; autoplay"
                             allowFullScreen
                             className="absolute top-0 left-0 w-full h-full border-2 rounded-lg overflow-hidden"
-                            ></iframe>
-                            // <iframe width="560" height="315"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            />
+                            <iframe width="560" height="315"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
                         {/* </span> */}
                     </div>
@@ -146,9 +146,11 @@ export default function About() {
 
             {/* Call to Action */}
             <div className="py-16 flex justify-center">
-                <button className="bg-yellow-500 text-black px-8 py-4 rounded-full font-medium transition-transform transform hover:scale-110">
+                <Link href="/interface">
+                <button  className="bg-yellow-500 text-black px-8 py-4 rounded-full font-medium transition-transform transform hover:scale-110">
                     Start Your AI-Powered Journey ➜
                 </button>
+                </Link>
             </div>
         </div>
     );
